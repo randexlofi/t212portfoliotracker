@@ -1,6 +1,6 @@
 import requests
 
-API = "22545232ZVKKxOZxPiTOhMgvmfUGbBnvGaloq"
+API = "YOUR_T212_API_KEY_HERE"
 
 
 def get_account_cash():
