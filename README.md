@@ -18,6 +18,6 @@ With this app you can have your trading 212 portfolio on your screen 24/7 for yo
 - Dividend track (You need to go to the config.ini to update it manually).
 
 ## Future updates:
-- Add another tab (Stocks) to track how the Incomeshares ETP's are performing (%yield, $price, etc...);
-- A menu/tab where you could update the dividend data (add/remove/edit);
-- A login/profile system so you can edit the settings without acessing the config.ini file. (settings like the API Key).
+- Add another tab (Stocks) to track how the Incomeshares ETP's are performing (%yield, $price, etc...) [❌];
+- A menu/tab where you could update the dividend data (add/remove/edit)[❌];
+- A login/profile system so you can edit the settings without acessing the config.ini file. (settings like the API Key)[❌].
