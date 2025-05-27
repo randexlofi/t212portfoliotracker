@@ -8,7 +8,7 @@ config = configparser.ConfigParser()
 def main():
     if not os.path.exists(config_file):
         config['Default'] = {
-            't212_key': "YOUR_T212_API_KEY_HERE",
+            't212_key': "KEY_HERE",
         }
         config['Settings'] = {
             'api_request_delay': 5,

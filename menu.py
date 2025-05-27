@@ -145,10 +145,18 @@ def on_change(sender, app_data, user_data):
         config.update_data('Settings', 'auto_update_delay', str(app_data)) # Update config file
     print(user_data)
     
+def change_ticker_info():
+    combo_info = dpg.get_value("ticker_combo")
+    info, val, title = misc.request_data(combo_info)
+    dpg.set_value("ticker_info", info)
+    dpg.set_value("ticker_val", val)
+    dpg.set_value("ticker_title", title)
+    
+
 state = {"slider_value": auto_update_delay, "checkbox_state": can_auto_update}
 
 # Main window
-with dpg.window(label="portfolio", width=500, height=900) as main_window:
+with dpg.window(label="portfolio", width=550, height=1000) as main_window:
     def close_app():
         dpg.stop_dearpygui()
 
@@ -185,6 +193,14 @@ with dpg.window(label="portfolio", width=500, height=900) as main_window:
                     dpg.add_line_series(x_data, y_data, label="Line", parent=y_axis)
         with dpg.tab(label="Stocks"):
             dpg.add_text("Incomeshares ETP data")
+            dpg.add_combo([item["ticker"] for item in misc.incomeshares_data], callback=change_ticker_info, 
+                          default_value="Select a ticker", width=150, tag="ticker_combo")
+            
+            dpg.add_text("", tag="ticker_title")
+            with dpg.group(horizontal=True):
+                dpg.add_text("", tag="ticker_info")
+                dpg.add_text("", tag="ticker_val")
+
         
 
 dpg.set_frame_callback(dpg.get_frame_count() + 1, update_api) # Update data using API on startup
@@ -195,7 +211,7 @@ if config.get_data('Settings', 'theme') == 'Light Theme':
 elif config.get_data('Settings', 'theme') == 'Dark Theme':
     dpg.bind_theme(dark_theme) #Theme setup
 
-dpg.create_viewport(title='Personal Toolbox', width=600, height=620, decorated=True, resizable=True)
+dpg.create_viewport(title='Personal Toolbox', width=600, height=720, decorated=True, resizable=True)
 
 dpg.setup_dearpygui()
 dpg.show_viewport()
